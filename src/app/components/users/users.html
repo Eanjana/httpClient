@@ -1,0 +1,23 @@
+<h2>Users List</h2>
+
+@if (message) {
+  <p style="color: green;">{{ message }}</p>
+}
+
+<button (click)="loadUsers()">Get Users</button>
+<button (click)="addUser()">POST User</button>
+<button (click)="updateUser()">PUT User</button>
+<button (click)="patchUser()">PATCH User</button>
+<button (click)="deleteUser()">DELETE User</button>
+
+<ul>
+  @for (user of users; track user.id) {
+    
+    <li [attr.data-highlight]="
+        user.id === highlightId ? highlightType : null
+      ">
+
+      {{ user.id }} - {{ user.name }} - {{ user.email }}
+    </li>
+  }
+</ul>
